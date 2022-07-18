@@ -15,6 +15,6 @@ module.exports = {
     semi: "off",
     "linebreak-style": "off",
     "comma-dangle": "off",
-    quotes: "double",
+    quotes: 0,
   },
 };
