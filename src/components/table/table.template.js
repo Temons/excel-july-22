@@ -37,7 +37,9 @@ function toCell(state, row) {
         data-type="cell"
         data-value="${data || ''}"
         style="${styles}; width: ${width}"
-      >${parse(data) || ''}</div>
+      >
+        ${parse(data) || ''}
+      </div>
     `; 
   }
 }
