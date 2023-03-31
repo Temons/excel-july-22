@@ -7,8 +7,8 @@ import { Table } from "@/components/table/Table";
 import { createStore } from "../core/store/createStore";
 import { rootReducer } from "../redux/rootReducer";
 import { normalizeInitialState } from "../redux/initialState";
-import StateProcessor from "../core/page/stateProcessor";
 import { LocalStorageClient } from "../shared/LocalStorageClient";
+import StateProcessor from "@core/page/StateProcessor";
 
 export class ExcelPage extends Page {
   constructor(param) {
