@@ -7,8 +7,8 @@ const CODES = {
   Z: 90,
 };
 
- const DEFAULT_WIDTH = 120;
- const DEFAULT_HEIGHT = 24;
+const DEFAULT_WIDTH = 120;
+const DEFAULT_HEIGHT = 24;
 
 function getWidth(state, index) {
   return (state[index] || DEFAULT_WIDTH) + 'px'
@@ -19,7 +19,7 @@ function getHeight(state, index) {
 }
 
 function toCell(state, row) {
-  return function (_, col) {
+  return function(_, col) {
     const id = `${row}:${col}`;
     const width = getWidth(state.colState, col);
     const data = state.dataState[id];
@@ -40,11 +40,11 @@ function toCell(state, row) {
       >
         ${parse(data) || ''}
       </div>
-    `; 
+    `;
   }
 }
 
-function toColumn({col, index, width}) {
+function toColumn({ col, index, width }) {
   return `
         <div class="column" data-type="resizable" data-col="${index}" style="width:${width}">
           ${col}
@@ -89,7 +89,7 @@ export function createTable(rowsCount = 13, state = {}) {
     .map(withWidthFrom(state))
     .map(toColumn)
     .join("");
-  
+
 
   rows.push(createRow(null, cols, {}));
 

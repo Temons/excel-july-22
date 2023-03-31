@@ -39,7 +39,7 @@ class Dom {
   }
 
   find($selector) {
-    return $(this.$el.querySelector($selector));Í
+    return $(this.$el.querySelector($selector));
   }
 
   append(node) {
@@ -72,7 +72,7 @@ class Dom {
   }
 
   css(styles = {}) {
-    Object.keys(styles).forEach(key => this.$el.style[key] = styles[key])
+    Object.keys(styles).forEach((key) => this.$el.style[key] = styles[key])
   }
 
   getStyles(styles = []) {

@@ -2,7 +2,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProd = argv.mode === "production";
@@ -53,7 +52,7 @@ module.exports = (env, argv) => {
       hot: true,
       watchFiles: "./",
     },
-    devtool: isDev ? "source-map" : false,
+    devtool: "source-map",
     resolve: {
       extensions: [".js"],
       alias: {

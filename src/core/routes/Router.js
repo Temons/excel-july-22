@@ -1,50 +1,50 @@
-import {$} from '../dom'
+import { $ } from '../dom'
 import { ActiveRoute } from './ActiveRoute';
 import { Loader } from '../../components/Loader';
 
 export class Router {
-    constructor(selector, routes) {
-        if(!selector) {
-            throw new Error('No selector provided to Router')
-        }
-
-        this.$placeholder = $(selector);
-        this.routes = routes;
-
-        this.loader = new Loader()
-
-        this.page = null
-
-        this.changePageHandler = this.changePageHandler.bind(this)
-
-        this.init()
+  constructor(selector, routes) {
+    if (!selector) {
+      throw new Error('No selector provided to Router')
     }
 
-    init() {
-        window.addEventListener('hashchange', this.changePageHandler);
-        this.changePageHandler()
+    this.$placeholder = $(selector);
+    this.routes = routes;
+
+    this.loader = new Loader()
+
+    this.page = null
+
+    this.changePageHandler = this.changePageHandler.bind(this)
+
+    this.init()
+  }
+
+  init() {
+    window.addEventListener('hashchange', this.changePageHandler);
+    this.changePageHandler()
+  }
+
+  async changePageHandler() {
+    if (this.page) {
+      this.page.destroy()
     }
+    this.$placeholder.clear().append(this.loader);
 
-    async changePageHandler() {
-        if (this.page) {
-            this.page.destroy()
-        }
-        this.$placeholder.clear().append(this.loader);
+    const Page = ActiveRoute.path.includes('excel') ?
+      this.routes.excel
+      : this.routes.dashboard
 
-        const Page = ActiveRoute.path.includes('excel') ?
-            this.routes.excel 
-            : this.routes.dashboard
+    this.page = new Page(ActiveRoute.param);
 
-        this.page = new Page(ActiveRoute.param);
+    const root = await this.page.getRoot();
 
-        const root = await this.page.getRoot();
+    this.$placeholder.clear().append(root);
 
-        this.$placeholder.clear().append(root);
+    this.page.afterRender();
+  }
 
-        this.page.afterRender();
-    }
-
-    destroy() {
-        window.removeEventListener('hashchange', this.changePageHandler)
-    }
+  destroy() {
+    window.removeEventListener('hashchange', this.changePageHandler)
+  }
 }
