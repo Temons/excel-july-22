@@ -20,11 +20,9 @@ module.exports = {
     "quotes": 0,
     "require-jsdoc": "off",
     "operator-linebreak": "off",
-    "react/jsx-indent": [2, 2],
     "indent": [2, 2],
-    "react/react-in-jsx-scope": "off",
     "object-curly-spacing": ["error", "always"],
     "no-undef": "off",
-    "react/display-name": "off"
+    "max-len": ["error", { "code": 100 }]
   },
 };

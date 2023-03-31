@@ -22,7 +22,7 @@ export function storage(key, data = null) {
   localStorage.setItem(key, JSON.stringify(data))
 }
 
-export function isEqual(a,b) {
+export function isEqual(a, b) {
   if (typeof a === 'object' && typeof b === 'object') {
     return JSON.stringify(a) === JSON.stringify(b)
   }
@@ -36,8 +36,8 @@ export function camelToDashCase(str) {
 
 export function toInlineStyles(styles = {}) {
   return Object.keys(styles)
-  .map(key => `${camelToDashCase(key)}: ${styles[key]}`)
-  .join(';')
+    .map((key) => `${camelToDashCase(key)}: ${styles[key]}`)
+    .join(';')
 }
 
 export function debounce(fn, wait) {
@@ -45,6 +45,7 @@ export function debounce(fn, wait) {
   return function(...args) {
     const later = () => {
       clearTimeout(timeout);
+      // eslint-disable-next-line no-invalid-this
       fn.apply(this, args)
     }
     clearTimeout(timeout);

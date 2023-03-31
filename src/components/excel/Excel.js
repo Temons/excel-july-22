@@ -39,6 +39,6 @@ export class Excel {
 
   destroy() {
     this.subscriber.unsubscribeFromStore();
-    this.components.forEach(component => component.destroy())
+    this.components.forEach((component) => component.destroy())
   }
 }
