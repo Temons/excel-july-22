@@ -51,6 +51,9 @@ module.exports = (env, argv) => {
       open: true,
       hot: true,
       watchFiles: "./",
+      static: {
+        directory: path.join(__dirname, 'src')
+      }
     },
     devtool: "source-map",
     resolve: {
@@ -78,6 +81,14 @@ module.exports = (env, argv) => {
             },
           },
         },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        }
       ],
     },
   };

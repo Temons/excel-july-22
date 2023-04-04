@@ -8,6 +8,18 @@ export class DashboardPage extends Page {
     return $.create('div', 'db').html(`
             <div class="db__header">
                 <h1>Excel Dashboard</h1>
+                <a
+                  target="_blank"
+                  href="https://github.com/Temons/excel-july-22"
+                  class="db__logo"
+                >
+                  <img
+                    src="assets/icons/github-mark.svg"
+                    width="24"
+                    height="24"
+                    alt="Icon"
+                   />
+                 </a>
             </div>
 
             <div class="db__new">
